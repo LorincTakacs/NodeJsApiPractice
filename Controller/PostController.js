@@ -16,7 +16,7 @@ const getPostById = (req, res) => {
     try {
         const id = parseInt(req.params.id, 10);
         const post = PostModel.GetPostById(id);
-        if (!post) {
+        if (!post || post.length == 0) {
             return res.status(404).json({ message: "Keresett post nem található!" });
         }
         res.status(200).json(post);
@@ -29,9 +29,9 @@ const getPostById = (req, res) => {
 
 const getPostByTagNames = (req, res) => {
     try {
-        let tag = validator.escape(req.params.name); //TODO: protekciózni
+        let tag = validator.escape(req.params.name);
         const post = PostModel.GetPostByTagNames(tag);
-        if (!post) {
+        if (!post || post.length == 0) {
             return res.status(404).json({ message: "Ilyen tag nem létezik!" });
         }
         res.status(200).json(post);

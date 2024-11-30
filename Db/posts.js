@@ -13,7 +13,7 @@ const posts = [
       "headline": "...",
       "body": "...",
       "created_at": "2023-02-10",
-      "tags": ["Business", "Tech"]
+      "tags": ["Business", "Tech", "Sports"]
     },
     {
       "id": 3,

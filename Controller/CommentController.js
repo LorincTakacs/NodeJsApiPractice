@@ -2,7 +2,10 @@ const CommentModel = require('../Model/CommentModel');
 
 const getCommentsOnPost = (req, res) => {
     try {        
-        const postId = parseInt(req.params.id, 10);        
+        if(req.params.id.trim() === "" || !req.params.id) {
+            return res.status(404).json({message: "Hiányos url!"});
+        }
+        const postId = parseInt(req.params.id, 10);
         const comments = CommentModel.GetCommentsOnPost(postId);
         if(!comments || comments.length == 0) {
             return res.status(404).json({message: "Ehhez a posthoz nincs még komment!"});

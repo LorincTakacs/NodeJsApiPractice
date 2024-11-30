@@ -16,7 +16,13 @@ app.use(express.json());
 app.use('/api', postRoutes);
 app.use('/api', commentRoutes);
 
+app.use((req, res)=>{
+    res.status(404).json({
+        message: "Ismeretlen kérés"
+    })
+});
+
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`OK - PORT: ${port}`)
 })

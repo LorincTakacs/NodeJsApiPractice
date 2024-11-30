@@ -11,7 +11,7 @@ class PostModel {
     }
 
     static GetPostByTagNames(tag) {
-        return posts.find(post =>  post.tags.includes(tag));
+        return posts.filter(post =>  post.tags.includes(tag));
     }
 
 }
