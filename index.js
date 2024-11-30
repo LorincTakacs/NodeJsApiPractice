@@ -1,26 +1,19 @@
 const express = require('express')
+const postRoutes = require('./Routes/postRoutes');
+const commentRoutes = require('./Routes/commentRoutes');
 const app = express()
 const port = 3000
 
 
 //Custom routes
+app.use(express.json());
 
-app.get('/api/posts', (req, res) => {    
-    res.json(posts);
-});
+/**
+ * Api pathways
+ */
+app.use('/api', postRoutes);
+app.use('/api', commentRoutes);
 
-app.get('/api/posts/:id', (req, res) => {
-    res.send('Hello World!')
-});
-
-app.get('/api/posts/:id/comments', (req, res) => {
-    res.send('Hello World!')
-});
-
-app.get('/api/tags/:name', (req, res) => {
-    res.send('Hello World!')
-});
-  
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

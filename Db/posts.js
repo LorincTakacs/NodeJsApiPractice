@@ -6,7 +6,7 @@ const posts = [
       "body": "...",
       "created_at": "2023-02-11",
       "tags": ["Sports"]
-    },
+    },       
     {
       "id": 2,
       "title": "...",
