@@ -1,4 +1,6 @@
 const PostModel = require('../Model/PostModel');
+const validator = require('validator');
+
 
 const getAllPosts = (req, res) => {
     try {
@@ -23,9 +25,23 @@ const getPostById = (req, res) => {
         //console.error(err);
         return res.status(500).json({message: "Ismeretlen hiba történt"});
     }
-}
+};
+
+const getPostByTagNames = (req, res) => {
+    try {
+        let tag = validator.escape(req.params.name); //TODO: protekciózni
+        const post = PostModel.GetPostByTagNames(tag);
+        if (!post) {
+            return res.status(404).json({ message: "Ilyen tag nem létezik!" });
+        }
+        res.status(200).json(post);
+    } catch (err)  {
+        return res.status(500).json({message: "Ismeretlen hiba történt"});
+    }
+};
 
 module.exports = {
     getAllPosts,
-    getPostById
+    getPostById,
+    getPostByTagNames
 }

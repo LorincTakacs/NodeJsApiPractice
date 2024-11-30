@@ -10,6 +10,9 @@ class PostModel {
         return posts.find(post => post.id === id);
     }
 
+    static GetPostByTagNames(tag) {
+        return posts.find(post =>  post.tags.includes(tag));
+    }
 
 }
 
