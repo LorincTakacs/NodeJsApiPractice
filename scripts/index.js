@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        //Példa útvonal kezelés:
+        //Példa útvonal kezelés: TODO lehet kiszervezni
         if (route === '/posts') {
             try {
                 const response = await fetch('/api/posts');
